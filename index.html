@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thierry Ipsum</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Times New Roman", Times, serif;
+            background-color: #fff5f0;
+            color: #990019;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #990019;
+            color: #fff;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .content {
+            margin: 20px auto;
+            max-width: 800px;
+            flex: 1;
+        }
+
+        .generator {
+            padding: 10px 20px;
+            border: 2px solid #990019;
+            background-color: #fff;
+            color: #990019;
+            font-size: 16px;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .generator:hover {
+            background-color: #990019;
+            color: #fff;
+        }
+
+        .lorem-container {
+            margin-top: 20px;
+            padding: 20px;
+            border: 2px solid #990019;
+            background-color: #fff;
+            line-height: 1.8;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        .lorem-container p {
+            margin: 10px 0;
+        }
+
+        footer {
+            padding: 10px;
+            font-size: 14px;
+            color: #fff;
+            background-color: #990019;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<header>Thierry Ipsum</header>
+
+<div class="content">
+    <button class="generator" onclick="generateLorem()">Generate Ipsum</button>
+    <div id="lorem-container" class="lorem-container"></div>
+</div>
+
+<footer>Designed in the spirit of the Roman Empire</footer>
+
+<script>
+    function generateLorem() {
+        const loremText = [
+            "Quo usque tandem factionem cartellum et officiorum machina patientia nostra abutitur.",
+            "Dum navis praetoria resurrectionis ad profiscendum parata est.",
+            "Factionem cartellum tandem navis praetoria ad astra.",
+            "Officiorum machina patientia nostra abutitur tandem resurrectionis.",
+            "Praetoria resurrectionis parata est tandem factionem cartellum."
+        ];
+        const container = document.getElementById('lorem-container');
+
+        let repeatedText = '';
+        for (let i = 0; i < 15; i++) {
+            const randomSentence = loremText[Math.floor(Math.random() * loremText.length)];
+            repeatedText += `${randomSentence} `;
+
+            // Randomly decide to end the paragraph
+            if (Math.random() > 0.7 || i === 14) {
+                repeatedText += '</p><p>';
+            }
+        }
+        container.innerHTML = `<p>${repeatedText}</p>`;
+    }
+</script>
+</body>
+</html>
